@@ -1,14 +1,22 @@
 from tweepy import Stream
 from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
+import time 
 
 import twitter_credentials
 
 class listener(StreamListener):
 
     def on_data(self, data):
-        print(data)
-        return(True)
+        try:
+          saveFile = open('tweetDB.csv','a')
+          saveFile.write(data)
+          saveFile.write('\n')
+          saveFile.close
+          return True
+        except BaseException:
+          print('failed on tweet data')
+          time.sleep(5)
 
     def on_error(self, status):
         print(status)
