@@ -25,7 +25,10 @@ class listener(StreamListener):
           time.sleep(5)
 
     def on_error(self, status):
-        print(status)
+        print(status)            
+        if status == 429:
+              print("App's rate limit having been exhausted for the resource. Waiting.....")
+              time.sleep(15*60) # Waiting 15 minutes 
 
 
 auth = OAuthHandler(twitter_credentials.CONSUMER_KEY, twitter_credentials.CONSUMER_SECRET)
