@@ -20,9 +20,8 @@ for status in tweepy.Cursor(api.search,q = 'sydney', geocode = syd,tweet_mode="e
     jdata = json.dumps(status._json)
     all_data = json.loads(jdata)
     tweet = all_data["full_text"]
-    #print(tweet)
     saveFile = open('tweetDBsearch.csv','a')
-    saveFile.write(jdata)
+    saveFile.write(tweet)
     saveFile.write('\n')
     saveFile.close
 
